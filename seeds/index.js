@@ -3,15 +3,15 @@ const {User,Blog} = require("../models")
 
 const users = [
     {
-        username:"ester",
+        username:"Ester",
         password:"password"
     },
     {
-        username:"otherester",
+        username:"Joe",
         password:"password1"
     },
     {
-        username:"therealester",
+        username:"Caleb",
         password:"Password1"
     }
 ]
