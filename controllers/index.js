@@ -7,9 +7,10 @@ router.use("/api/users",userRoutes)
 const blogRoutes = require("./blogRoutes");
 router.use("/api/blogs",blogRoutes)
 
-router.get("/showsessions",(req,res)=>{
-    res.json(req.session)
-})
+const frontEnd = require("./frontEndRoutes");
+router.use("/",frontEnd)
+
+
 
 router.get("/setfaveanimal/:faveanimal",(req,res)=>{
     req.session.favAnimal = req.params.faveanimal;
@@ -22,8 +23,6 @@ router.get("/secretclub",(req,res)=>{
     }
     res.json({msg:`welcome to the club ${req.session.user.username}`})
 })
-router.get("/",(req,res) =>{
-    res.render("home")
-})
+
 
 module.exports = router;

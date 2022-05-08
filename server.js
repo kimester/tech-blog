@@ -28,7 +28,7 @@ const sess = {
 };
 app.use(session(sess))
 // Static directory
-// app.use(express.static('public'));
+app.use(express.static('public'));
 
 const hbs = exphbs.create({});
 app.engine('handlebars', hbs.engine);
