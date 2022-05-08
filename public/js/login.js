@@ -1,5 +1,3 @@
-
-
 console.log("login linked");
 document.querySelector("#login").addEventListener("submit",e=>{
   e.preventDefault();
