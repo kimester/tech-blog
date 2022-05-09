@@ -16,6 +16,7 @@ router.get("/", (req, res) => {
       res.status(500).json({ msg: "an error occured", err });
     });
 });
+//log out and delete session
 router.get("/logout",(req,res)=>{
   req.session.destroy();
   res.json({msg:"logged out!"});
