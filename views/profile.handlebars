@@ -1,15 +1,34 @@
+
+<nav class="navbar navbar-light" style="background-color: #739dbb;">
 <h1>Welcome back {{username}}</h1>
+
+  <ul class="nav">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="/profile">Dashboard</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/login">Log In</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/api/users/logout">Log out</a>
+  </li>
+ 
+  
+</ul>
+</nav>
 <h2>All your blogs:</h2>
+
 <form action="" id="newBlog">
-    <input type="text" id=""title placholder="title">
-    <textarea id="body" id="" cols="30" rows="10"></textarea>
-    <button>Submit</button>
+    <input type="text" id="title" placholder="title">
+    <textarea id="body" cols="30" rows="10"></textarea>
+    <button id="submitBtn"type="button" class="btn btn-info">Submit</button>
 </form>
 
 {{#each Blogs}}
 <h3>{{title}}</h3>
 <p>{{body}}</p>
-<button>delete</button>
+  <button type="button" class="btn btn-info" id="update">Update</button>
+  <button type="button" class="btn btn-info" id="delete">Delete</button>
 {{/each}}
 
 <script src="/js/profile.js"></script>

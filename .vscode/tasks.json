@@ -1,0 +1,80 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "tsnode",
+      "type": "shell",
+      "command": "ts-node ${file}",
+      "presentation": {
+        "echo": false,
+        "panel": "shared",
+        "clear": true
+      }
+    },
+    {
+      "label": "node",
+      "type": "shell",
+      "command": "node ${file}",
+      "presentation": {
+        "echo": false,
+        "panel": "shared",
+        "clear": true
+      }
+    },
+    {
+      "label": "python",
+      "type": "shell",
+      "command": "python3 ${file}",
+      "presentation": {
+        "echo": false,
+        "panel": "shared",
+        "clear": true
+      }
+    },
+    {
+      "label": "dart",
+      "type": "shell",
+      "command": "dart ${file}",
+      "presentation": {
+        "echo": false,
+        "panel": "shared",
+        "clear": true
+      }
+    },
+    {
+      "label": "ruby",
+      "type": "shell",
+      "command": "ruby ${file}",
+      "presentation": {
+        "echo": false,
+        "panel": "shared",
+        "clear": true
+      }
+    },
+    {
+      "label": "go",
+      "type": "shell",
+      "command": "/usr/local/bin/go run ${file}",
+      "presentation": {
+        "echo": false,
+        "panel": "shared",
+        "clear": true
+      },
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+    },
+    {
+      "label": "java",
+      "type": "shell",
+      "command": "java ${file}",
+      "presentation": {
+        "echo": false,
+        "panel": "shared",
+        "clear": true
+      }
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { User, Blog } = require("../models");
+const withAuth = require("../utils/auth");
 
 router.get("/", (req, res) => {
   Blog.findAll().then((blogs) => {
@@ -13,22 +14,30 @@ router.get("/", (req, res) => {
     res.render("home", { blogs: hbsBlogs });
   });
 });
+
 router.get("/login", (req, res) => {
-  res.render("login");
+  if (!req.session.logged_in) {
+    res.redirect("/login");
+    return;
+  }
+  res.render('login');
+   
 });
 
-router.get("/profile", (req, res) => {
-  if (!req.session.user) {
-    return res.redirect("/login");
-  }
-  User.findByPk(req.session.user.id, {
-    include: [Blog],
-  }).then((userData) => {
-    console.log(userData);
-    const hbsData = userData.get({ plain: true });
-    console.log("======");
-    console.log(hbsData);
-    res.render("profile", hbsData);
+router.get("/profile", withAuth,  (req, res) => {
+
+  Blog.findAll({
+    where: {
+      user_id: req.session.user_id
+    }
+  }).then((blogData) => {
+
+   const blogs = blogData.map((blog)=> blog.get({plain: true}));
+
+   res.render('profile', {
+     blogs, logged_in: req.session.logged_in
+   })
+
   });
 });
 

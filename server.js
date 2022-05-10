@@ -4,17 +4,15 @@ const allRoutes = require('./controllers');
 const session = require("express-session")
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
-
+const helpers = require('./utils/helpers');
+const path = require('path');
 
 // Sets up the Express App
 // =============================================================
 const app = express();
 const PORT = process.env.PORT || 3000;
-// Requiring our models for syncing
-const {User,Blog} = require("./models")
-// Sets up the Express app to handle data parsing
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+// Set up Handlebars.js engine with custom helpers
+const hbs = exphbs.create({ helpers });
 const sess = {
     secret: 'Super secret secret',
     cookie: {
@@ -26,15 +24,18 @@ const sess = {
         db: sequelize,
     }),
 };
-app.use(session(sess))
-// Static directory
-app.use(express.static('public'));
 
-const hbs = exphbs.create({});
+app.use(session(sess));
+
+// Inform Express.js on which template engine to use
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
-app.use('/',allRoutes);
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(allRoutes);
 
 sequelize.sync({ force: false }).then(function() {
     app.listen(PORT, function() {
