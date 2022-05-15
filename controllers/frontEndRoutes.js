@@ -11,7 +11,7 @@ router.get("/", (req, res) => {
     });
     console.log("==========");
     console.log(hbsBlogs);
-    res.render("home", { blogs: hbsBlogs });
+    res.render("home", { hbsBlogs ,loggedIn: req.session.loggedIn});
   });
 });
 

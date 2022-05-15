@@ -1,7 +1,7 @@
 {{>header}}
 <h1> {{#if loggedIn}}</h1>
 <p >Welcome back {{username}}</p>
-{{#each blogs}}
+{{#each hbsBlogs}}
 <h3>{{title}}</h3>
 <p>{{body}}</p>
 <div class="form-floating">
@@ -10,3 +10,4 @@
 </div>
 <hr>
 {{/each}}
+{{/if}}
