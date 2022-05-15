@@ -24,13 +24,13 @@ router.post("/", (req, res) => {
     });
 });
 
-router.post("/login", (req, res) => {
+router.post("/login", async (req, res) => {
   User.findOne({
     where: {
       username: req.body.username,
     },
   })
-    .then((userData) => {
+    .then(async (userData) => {
       
       if (!userData) {
         res
