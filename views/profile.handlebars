@@ -1,7 +1,7 @@
 
 <nav class="navbar navbar-light" style="background-color: #739dbb;">
 <h1>Welcome back {{username}}</h1>
-
+{{!-- 
   <ul class="nav">
   <li class="nav-item">
     <a class="nav-link active" aria-current="page" href="#" id="/">Dashboard</a>
@@ -11,7 +11,7 @@
   </li>
   <li class="nav-item">
     <a class="nav-link" href="/api/users/logout">Log out</a>
-  </li>
+  </li> --}}
  
   
 </ul>
@@ -19,9 +19,9 @@
 <h2>All your blogs:</h2>
 
 <form action="" id="newBlog">
-    <input type="text" id="title" placholder="title">
+    <input type="text" id="title" placeholder="title">
     <textarea id="body" cols="30" rows="10"></textarea>
-    <button id="submitBtn"type="button" class="btn btn-info">Submit</button>
+    <button id="submitBtn"type="submit" class="btn btn-info">Submit</button>
 </form>
 
 {{#each Blogs}}
