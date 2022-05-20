@@ -8,14 +8,15 @@ router.get("/logout", (req, res) => {
 });
 
 //create user
-router.post("/", (req, res) => {
+// /api/users/signup
+router.post("/signup", (req, res) => {
   User.create(req.body)
     .then((newUser) => {
       req.session.save(() => {
         req.session.user_id = newUser.id;
         req.session.logged_in = true;
 
-        res.status(200).json(userData);
+        res.status(200).json(newUser);
       });
     })
     .catch((err) => {
@@ -23,7 +24,7 @@ router.post("/", (req, res) => {
       res.status(500).json({ msg: "an error occured", err });
     });
 });
-
+// /api/users/login
 router.post("/login", async (req, res) => {
   User.findOne({
     where: {

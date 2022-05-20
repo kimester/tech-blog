@@ -4,6 +4,23 @@ const { User, Blog } = require("../../models");
 const withAuth = require("../../utils/auth");
 
 
+router.get("/", (req, res) => {
+  Blog.findAll({
+    include: [
+      {
+        model: User,
+        attributes: ['username'],
+      },
+    ]
+  })
+    .then(dbBlogs => {
+      res.json(dbBlogs);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({ msg: "an error occured", err });
+    });
+});
 
 //create Blog
 router.post("/", withAuth, (req, res) => {
