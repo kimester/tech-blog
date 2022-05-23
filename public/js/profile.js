@@ -1,3 +1,8 @@
+console.log("news linked");
+
+ const title = document.querySelector("#title");
+  const body = document.querySelector("#body");
+
 document.querySelector("#newBlog").addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -6,8 +11,6 @@ document.querySelector("#newBlog").addEventListener("submit", (e) => {
     body: body.value,
   };
  
-   const title = document.querySelector("#title");
-  const body = document.querySelector("#body");
 
   console.log(blogObj);
   fetch("/api/blogs/", {
@@ -24,5 +27,4 @@ document.querySelector("#newBlog").addEventListener("submit", (e) => {
     }
   });
 });
-
 
